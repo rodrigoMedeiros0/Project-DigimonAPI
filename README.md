@@ -32,3 +32,7 @@ Após baixar o projeto, você pode abrir com o Visual Studio Code ou Atom e cliq
 - Open Folder
 - Procure o local onde o projeto está e o selecione (Caso o projeto seja baixado via zip, é necessário extraí-lo antes de procurá-lo)
 - Por fim, clique em OK.
+
+## ⭐Projeto em construção
+- Próximo passo agora é inserir um input para buscar os digimons pelo nome
+- Para finalizar, colocar um filtro por level do digimon
