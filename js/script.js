@@ -378,12 +378,21 @@ async function getDigimon() {
 }
 getDigimon();
 
-console.log(names)
 
-for(let count = 1; i <=209; i++) {
+
+  function search() {
+    let digimonInput = document.querySelector('.search-data').value;
+
+    for(let i = 1; i <= 209; i++) {
   
-let digimonLocal = localStorage.key(count);
+      let digimonLocal = localStorage.key(i);
+      
+      let trueDigimon = digimonLocal.indexOf(digimonInput);
 
-//  se key indexOF if -1 = erro
-
+      if (trueDigimon != -1) {
+       console.log(digimonLocal);
+       } else {
+         console.log('erro');
+       }
+  }
 }
