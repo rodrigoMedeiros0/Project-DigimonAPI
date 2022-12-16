@@ -1,18 +1,68 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Digimon</title>
-  <link rel="stylesheet" href="./css/style.css">
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Digimon</title>
+
+   <!-- font awesome cdn -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+   <!-- arquivo css -->
+   <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
-  
-  <h1>Lista de Digimons</h1>
 
-  <div class="container"></div>
 
-<script src="./js/script.js"></script>
+   <nav>
+      <div class="menu-icon">
+         <span class="fas fa-bars"></span>
+      </div>
+      <div class="logo">
+         <span onclick="getAllDigimons()">Digimon Project</span>
+      </div>
+      <div class="nav-items">
+         <li><a href="#" onclick="getTrainingDigimon()">In-Training </a></li>
+         <li><a href="#" onclick="getRookieDigimon()">Rookie</a></li>
+         <li><a href="#" onclick="getChampionDigimon()">Champion</a></li>
+         <li><a href="#" onclick="getUltimateDigimon()">Ultimate</a></li>
+         <li><a href="#" onclick="getMegaDigimon()">Mega</a></li>
+      </div>
+      <div class="search-icon">
+         <span class="fas fa-search"></span>
+      </div>
+      <div class="cancel-icon">
+         <span class="fas fa-times"></span>
+      </div>
+      <form action="#">
+         <input type="search" class="search-data" placeholder="Buscar Digimon">
+         <button type="submit" class="fas fa-search" onclick="searchDigimon()"></button>
+      </form>
+   </nav>
+
+   <h1 class="titleMain"></h1>
+
+
+   <section class="show-digimon" id="getAllDigimon"></section>
+   <section class="show-digimon" id="getTrainingDigimon"></section>
+   <section class="show-digimon" id="getRookieDigimon"></section>
+   <section class="show-digimon" id="getChampionDigimon"></section>
+   <section class="show-digimon" id="getUltimateDigimon"></section>
+   <section class="show-digimon" id="getMegaDigimon"></section>
+   <section class="show-digimon" id="getSearchDigimon"></section>
+
+   <section class="footer">
+
+      <div class="box-container">
+
+      </div>
+
+      <h1 class="credit"><span>Rodrigo Medeiros</span> | <a href="https://github.com/rodrigoMedeiros0">Github</a></h1>
+
+      <script src="./js/script.js"></script>
 </body>
+
 </html>
