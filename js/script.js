@@ -86,8 +86,6 @@ async function getTrainingDigimon() {
   let response = await fetch(urlLevel);
   let data = await response.json();
 
-  console.log(data);
-
   data.map((digimon) => {
     //card element
     let divCard = document.createElement('div');
@@ -130,11 +128,8 @@ async function getRookieDigimon() {
 
   let response = await fetch(urlLevel);
 
-  console.log(response);
-
   let data = await response.json();
 
-  console.log(data);
   data.map((digimon) => {
     //card element
     let divCard = document.createElement('div');
@@ -177,11 +172,8 @@ async function getChampionDigimon() {
 
   let response = await fetch(urlLevel);
 
-  console.log(response);
+  let data = await response.json(); 
 
-  let data = await response.json();
-
-  console.log(data);
   data.map((digimon) => {
     //card element
     let divCard = document.createElement('div');
@@ -224,11 +216,8 @@ async function getUltimateDigimon() {
 
   let response = await fetch(urlLevel);
 
-  console.log(response);
-
   let data = await response.json();
 
-  console.log(data);
   data.map((digimon) => {
     //card element
     let divCard = document.createElement('div');
@@ -369,4 +358,32 @@ function searchDigimon() {
     });
 }
 
-getAllDigimons();
+async function getDigimon() {
+  displayNoneDigimon();
+  
+  let digimonInput = document.querySelector('.search-data').value;
+
+  let urlDigimon = 'https://digimon-api.vercel.app/api/digimon';
+
+  let response = await fetch(urlDigimon);
+
+  let data = await response.json(); 
+
+  data.map((digimon) => {
+
+    let name = digimon.name;
+    let url = `https://digimon-api.vercel.app/api/digimon/name/${name}`;
+    localStorage.setItem(name,url);
+  });
+}
+getDigimon();
+
+console.log(names)
+
+for(let count = 1; i <=209; i++) {
+  
+let digimonLocal = localStorage.key(count);
+
+//  se key indexOF if -1 = erro
+
+}
