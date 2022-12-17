@@ -194,7 +194,6 @@ nav .search-icon {
 .footer {
   background: var(--light-purple);
   bottom: 0;
-  position: absolute;
   width: 100%;
 }
 

@@ -7,6 +7,13 @@ let menuBtn = document.querySelector('.menu-icon span');
 let url = 'https://digimon-api.vercel.app/api/digimon';
 let titleMain = document.querySelector('.titleMain');
 
+let training = document.getElementById('getTrainingDigimon');
+let rookie = document.getElementById('getRookieDigimon');
+let champion = document.getElementById('getChampionDigimon');
+let ultimate = document.getElementById('getMegaDigimon');
+let mega = document.getElementById('getMegaDigimon');
+let search = document.getElementById('getSearchDigimon');
+
 let allSectionContainer = document.querySelectorAll('.show-digimon');
 
 menuBtn.onclick = () => {
@@ -45,6 +52,7 @@ async function getAllDigimons() {
   let data = await response.json();
 
   data.map((digimon) => {
+
     //card element
     let divCard = document.createElement('div');
     divCard.className = 'container';
@@ -76,21 +84,20 @@ async function getAllDigimons() {
   });
 }
 
-async function getTrainingDigimon() {
+let fetchLevelDigimon = async (level, id) => {
+  let url = `https://digimon-api.vercel.app/api/digimon/level/${level}`;
+
   displayNoneDigimon();
-  document.getElementById('getTrainingDigimon').classList.remove('hide');
+  id.classList.remove('hide');
 
-  titleMain.innerText = 'Digimons nível Training';
-
-  let urlLevel = 'https://digimon-api.vercel.app/api/digimon/level/In Training';
-  let response = await fetch(urlLevel);
+  let response = await fetch(url);
   let data = await response.json();
 
   data.map((digimon) => {
     //card element
     let divCard = document.createElement('div');
     divCard.className = 'container';
-    document.getElementById('getTrainingDigimon').appendChild(divCard);
+    id.appendChild(divCard);
 
     //div image
     let divImg = document.createElement('div');
@@ -115,26 +122,22 @@ async function getTrainingDigimon() {
     divCardContent.appendChild(divInfo);
 
     divCard.appendChild(divCardContent);
+    titleMain.innerText = `Digimons level: ${digimon.level}`;
   });
-}
+};
 
-async function getRookieDigimon() {
-  displayNoneDigimon();
-  document.getElementById('getRookieDigimon').classList.remove('hide');
+let fetchNameDigimon = async (name, id) => {
+  id.classList.remove('hide');
+  let url = `https://digimon-api.vercel.app/api/digimon/name/${name}`;
 
-  titleMain.innerText = 'Digimons nível Rookie';
-
-  let urlLevel = 'https://digimon-api.vercel.app/api/digimon/level/Rookie';
-
-  let response = await fetch(urlLevel);
-
+  let response = await fetch(url);
   let data = await response.json();
 
   data.map((digimon) => {
     //card element
     let divCard = document.createElement('div');
     divCard.className = 'container';
-    document.getElementById('getRookieDigimon').appendChild(divCard);
+    id.appendChild(divCard);
 
     //div image
     let divImg = document.createElement('div');
@@ -159,145 +162,9 @@ async function getRookieDigimon() {
     divCardContent.appendChild(divInfo);
 
     divCard.appendChild(divCardContent);
+    titleMain.innerText = `Resultado: `;
   });
-}
-
-async function getChampionDigimon() {
-  displayNoneDigimon();
-  document.getElementById('getChampionDigimon').classList.remove('hide');
-
-  titleMain.innerText = 'Digimons nível Champion';
-
-  let urlLevel = 'https://digimon-api.vercel.app/api/digimon/level/Champion';
-
-  let response = await fetch(urlLevel);
-
-  let data = await response.json(); 
-
-  data.map((digimon) => {
-    //card element
-    let divCard = document.createElement('div');
-    divCard.className = 'container';
-    document.getElementById('getChampionDigimon').appendChild(divCard);
-
-    //div image
-    let divImg = document.createElement('div');
-    let img = document.createElement('img');
-    divImg.classList.add('image');
-    img.setAttribute('src', `${digimon.img}`);
-    divImg.appendChild(img);
-    divCard.appendChild(divImg);
-
-    //card - digimon level
-    let divCardContent = document.createElement('div');
-    let divInfo = document.createElement('div');
-    let h2 = document.createElement('h2');
-    let span = document.createElement('span');
-
-    divCardContent.classList.add('content');
-    divInfo.classList.add('info');
-    h2.innerText = digimon.name;
-    span.innerText = digimon.level;
-    divInfo.appendChild(h2);
-    divInfo.appendChild(span);
-    divCardContent.appendChild(divInfo);
-
-    divCard.appendChild(divCardContent);
-  });
-}
-
-async function getUltimateDigimon() {
-  displayNoneDigimon();
-  document.getElementById('getUltimateDigimon').classList.remove('hide');
-
-  titleMain.innerText = 'Digimons nível Ultimate';
-
-  let urlLevel = 'https://digimon-api.vercel.app/api/digimon/level/Ultimate';
-
-  let response = await fetch(urlLevel);
-
-  let data = await response.json();
-
-  data.map((digimon) => {
-    //card element
-    let divCard = document.createElement('div');
-    divCard.className = 'container';
-    document.getElementById('getUltimateDigimon').appendChild(divCard);
-
-    //div image
-    let divImg = document.createElement('div');
-    let img = document.createElement('img');
-    divImg.classList.add('image');
-    img.setAttribute('src', `${digimon.img}`);
-    divImg.appendChild(img);
-    divCard.appendChild(divImg);
-
-    //card - digimon level
-    let divCardContent = document.createElement('div');
-    let divInfo = document.createElement('div');
-    let h2 = document.createElement('h2');
-    let span = document.createElement('span');
-
-    divCardContent.classList.add('content');
-    divInfo.classList.add('info');
-    h2.innerText = digimon.name;
-    span.innerText = digimon.level;
-    divInfo.appendChild(h2);
-    divInfo.appendChild(span);
-    divCardContent.appendChild(divInfo);
-
-    divCard.appendChild(divCardContent);
-  });
-}
-
-function displayNoneDigimon() {
-  allSectionContainer.forEach((element) => {
-    element.classList.add('hide');
-  });
-}
-
-async function getMegaDigimon() {
-  displayNoneDigimon();
-  document.getElementById('getMegaDigimon').classList.remove('hide');
-
-  titleMain.innerText = 'Digimons nível Mega';
-
-  let urlLevel = 'https://digimon-api.vercel.app/api/digimon/level/Mega';
-
-  let response = await fetch(urlLevel);
-  let data = await response.json();
-
-  data.map((digimon) => {
-    //card element
-    let divCard = document.createElement('div');
-    divCard.className = 'container';
-    document.getElementById('getMegaDigimon').appendChild(divCard);
-
-    //div image
-    let divImg = document.createElement('div');
-    let img = document.createElement('img');
-    divImg.classList.add('image');
-    img.setAttribute('src', `${digimon.img}`);
-    divImg.appendChild(img);
-    divCard.appendChild(divImg);
-
-    //card - digimon level
-    let divCardContent = document.createElement('div');
-    let divInfo = document.createElement('div');
-    let h2 = document.createElement('h2');
-    let span = document.createElement('span');
-
-    divCardContent.classList.add('content');
-    divInfo.classList.add('info');
-    h2.innerText = digimon.name;
-    span.innerText = digimon.level;
-    divInfo.appendChild(h2);
-    divInfo.appendChild(span);
-    divCardContent.appendChild(divInfo);
-
-    divCard.appendChild(divCardContent);
-  });
-}
+};
 
 function searchDigimon() {
   displayNoneDigimon();
@@ -357,42 +224,44 @@ function searchDigimon() {
       titleMain.innerText = `Não existe nenhum Digimon com esse nome: ${digimonInput}`;
     });
 }
-
-async function getDigimon() {
+async function getDigimonLocal() {
   displayNoneDigimon();
-  
-  let digimonInput = document.querySelector('.search-data').value;
+  document.querySelector('.footer').classList.add('hide');
 
   let urlDigimon = 'https://digimon-api.vercel.app/api/digimon';
 
   let response = await fetch(urlDigimon);
 
-  let data = await response.json(); 
+  let data = await response.json();
 
-  data.map((digimon) => {
+  localStorage.setItem('digimon', JSON.stringify(data));
 
-    let name = digimon.name;
-    let url = `https://digimon-api.vercel.app/api/digimon/name/${name}`;
-    localStorage.setItem(name,url);
-  });
-}
-getDigimon();
+  let arrayDigimon = JSON.parse(localStorage.getItem('digimon'));
 
+  let searchInput = document.getElementById('searchInput').value;
+  clearSearchContainer()
 
+  let filterResult = arrayDigimon.filter(
+    (digimon) =>
+      digimon.name.toLowerCase().match(searchInput) ||
+      digimon.name.match(searchInput),
+  );
 
-  function search() {
-    let digimonInput = document.querySelector('.search-data').value;
-
-    for(let i = 1; i <= 209; i++) {
-  
-      let digimonLocal = localStorage.key(i);
-      
-      let trueDigimon = digimonLocal.indexOf(digimonInput);
-
-      if (trueDigimon != -1) {
-       console.log(digimonLocal);
-       } else {
-         console.log('erro');
-       }
+  if (searchInput.length > 0) {
+    filterResult.forEach((digimon) => {
+      let name = digimon.name;
+      fetchNameDigimon(name, search);
+    });
+    
   }
 }
+
+function clearSearchContainer() {
+  let containerSearch = document.getElementById('getSearchDigimon');
+
+  while (containerSearch.firstChild) {
+    containerSearch.removeChild(containerSearch.firstChild);
+  }
+}
+
+getAllDigimons();

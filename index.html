@@ -25,11 +25,11 @@
          <span onclick="getAllDigimons()">Digimon Project</span>
       </div>
       <div class="nav-items">
-         <li><a href="#" onclick="getTrainingDigimon()">In-Training </a></li>
-         <li><a href="#" onclick="getRookieDigimon()">Rookie</a></li>
-         <li><a href="#" onclick="getChampionDigimon()">Champion</a></li>
-         <li><a href="#" onclick="getUltimateDigimon()">Ultimate</a></li>
-         <li><a href="#" onclick="getMegaDigimon()">Mega</a></li>
+         <li><a href="#" onclick="fetchLevelDigimon('In Training', training)">In-Training</a></li>
+         <li><a href="#" onclick="fetchLevelDigimon('Rookie', rookie)">Rookie</a></li>
+         <li><a href="#" onclick="fetchLevelDigimon('Champion', champion)">Champion</a></li>
+         <li><a href="#" onclick="fetchLevelDigimon('Ultimate', ultimate)">Ultimate</a></li>
+         <li><a href="#" onclick="fetchLevelDigimon('Mega', mega)">Mega</a></li>
       </div>
       <div class="search-icon">
          <span class="fas fa-search"></span>
@@ -37,9 +37,9 @@
       <div class="cancel-icon">
          <span class="fas fa-times"></span>
       </div>
-      <form action="#">
-         <input type="search" class="search-data" placeholder="Buscar Digimon" onkeyup="search()">
-         <button type="submit" class="fas fa-search" onclick="searchDigimon()"></button>
+      <form action="#" id="formSearch">
+         <input type="search" class="search-data" placeholder="Buscar Digimon" onkeyup="getDigimonLocal()" id="searchInput">
+         <button type="submit" class="fas fa-search" onclick=""></button>
       </form>
    </nav>
 
