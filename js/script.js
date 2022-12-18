@@ -10,7 +10,7 @@ let titleMain = document.querySelector('.titleMain');
 let training = document.getElementById('getTrainingDigimon');
 let rookie = document.getElementById('getRookieDigimon');
 let champion = document.getElementById('getChampionDigimon');
-let ultimate = document.getElementById('getMegaDigimon');
+let ultimate = document.getElementById('getUltimateDigimon');
 let mega = document.getElementById('getMegaDigimon');
 let search = document.getElementById('getSearchDigimon');
 
@@ -226,7 +226,7 @@ function searchDigimon() {
 }
 async function getDigimonLocal() {
   displayNoneDigimon();
-  document.querySelector('.footer').classList.add('hide');
+  search.classList.add('hide');
 
   let urlDigimon = 'https://digimon-api.vercel.app/api/digimon';
 
@@ -266,7 +266,6 @@ function clearSearchContainer() {
   }
 }
 
-getAllDigimons();
 
 
 function createContainerSearch(container,digimonImage,digimon, level) {
@@ -298,3 +297,5 @@ function createContainerSearch(container,digimonImage,digimon, level) {
   divCard.appendChild(divCardContent);
   titleMain.innerText = `Resultado: `;
 }
+
+getAllDigimons();
