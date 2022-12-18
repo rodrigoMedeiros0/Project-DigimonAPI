@@ -249,8 +249,10 @@ async function getDigimonLocal() {
 
   if (searchInput.length > 0) {
     filterResult.forEach((digimon) => {
-      let name = digimon.name;
-      fetchNameDigimon(name, search);
+      let name= digimon.name;
+      let level= digimon.level;
+      let img = digimon.img;
+      createContainerSearch(search,img,name,level)
     });
     
   }
@@ -265,3 +267,34 @@ function clearSearchContainer() {
 }
 
 getAllDigimons();
+
+
+function createContainerSearch(container,digimonImage,digimon, level) {
+  container.classList.remove('hide');
+  let divCard = document.createElement('div');
+  divCard.className = 'container';
+  container.appendChild(divCard);
+
+  let divImg = document.createElement('div');
+  let img = document.createElement('img');
+  divImg.classList.add('image');
+  img.setAttribute('src', digimonImage);
+  divImg.appendChild(img);
+  divCard.appendChild(divImg);
+
+  let divCardContent = document.createElement('div');
+  let divInfo = document.createElement('div');
+  let h2 = document.createElement('h2');
+  let span = document.createElement('span');
+
+  divCardContent.classList.add('content');
+  divInfo.classList.add('info');
+  h2.innerText = digimon;
+  span.innerText = level;
+  divInfo.appendChild(h2);
+  divInfo.appendChild(span);
+  divCardContent.appendChild(divInfo);
+
+  divCard.appendChild(divCardContent);
+  titleMain.innerText = `Resultado: `;
+}
