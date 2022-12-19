@@ -85,6 +85,7 @@ const navBarAnchors = document.querySelectorAll('.nav-items a');
 
 let fetchLevelDigimon = async (level, id) => {
   closeMenu();
+  let searchInput = document.getElementById('searchInput').value = '';
   document.getElementById('searchInput').innerText = '';
   let url = `https://digimon-api.vercel.app/api/digimon/level/${level}`;
   navBarAnchors.forEach((element) => {
