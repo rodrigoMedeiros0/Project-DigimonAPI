@@ -220,6 +220,8 @@ async function searchDigimon() {
       case 'Mega':
         fetchLevelDigimon('Mega', mega);
         break;
+        default: 
+      getAllDigimons();
     }
   }
 }
