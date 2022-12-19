@@ -33,7 +33,7 @@ nav {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 70px;
   padding: 0 100px;
   position: fixed;
@@ -51,7 +51,7 @@ nav .logo {
 nav .nav-items {
   display: flex;
   flex: 1;
-  padding: 0 0 0 2.5rem;
+  padding: 0 0 0 1.5rem;
 }
 nav .nav-items li {
   list-style: none;
@@ -69,34 +69,30 @@ nav .nav-items li a:hover {
 nav form {
   display: flex;
   height: 2.5rem;
-  padding: 0.2rem;
-  min-width: 18% !important;
-  border-radius: 0.2rem;
+  padding: 0.1rem;
+  background: #1e232b;
+  min-width: 18%!important;
+  border-radius: 0.1rem;
+  border: 0.1rem solid rgba(155,155,155,0.2);
+  color: var(--white);
 }
 nav form .search-data {
   width: 100%;
   height: 100%;
-  padding: 0 0.5rem;
+  padding: 0 10 0.7rem;
   color: #fff;
   font-size: 1.1rem;
   border: none;
   font-weight: 500;
   background: none;
-  background: var(--black);
 }
 nav form button {
-  padding: 0 0.8rem;
-  color: var(--white);
+  padding: 0 0.9rem;
+  color: var(--orange);
   font-size: 1.1rem;
-  background: var(--orange);
+  background: transparent;
   border: none;
-  border-radius: 2px;
-  cursor: pointer;
-  transition: 0.5s;
-  margin-left: 0.5rem;
-}
-nav form button:hover {
-  background: green;
+  border-radius: 0.1rem;
 }
 
 nav .menu-icon,
@@ -191,12 +187,6 @@ nav .search-icon {
   padding: 0.2rem;
 }
 
-
-@media (max-width: 1245px) {
-  nav {
-    padding: 0 50px;
-  }
-}
 @media (max-width: 1140px) {
   nav {
     padding: 0px;
@@ -205,6 +195,7 @@ nav .search-icon {
     flex: 2;
     text-align: center;
   }
+
   nav .nav-items {
     position: fixed;
     z-index: 99;
@@ -300,6 +291,17 @@ nav .logo.space {
   color: var(--orange);
   padding: 0 0.4rem 0 0;
 }
+
+@media (max-width: 1138) {
+  nav form {
+    min-width: 50% !important;
+  }
+
+  nav form .search-data {
+    width: 100%;
+  }
+}
+
 @media (max-width: 980px) {
   nav .menu-icon,
   nav .cancel-icon,

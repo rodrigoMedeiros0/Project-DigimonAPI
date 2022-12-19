@@ -51,6 +51,8 @@ async function getAllDigimons() {
   let response = await fetch(url);
   let data = await response.json();
 
+   localStorage.setItem('digimon', JSON.stringify(data));
+
   data.map((digimon) => {
 
     //card element
@@ -228,13 +230,6 @@ async function getDigimonLocal() {
   displayNoneDigimon();
   search.classList.add('hide');
 
-  let urlDigimon = 'https://digimon-api.vercel.app/api/digimon';
-
-  let response = await fetch(urlDigimon);
-
-  let data = await response.json();
-
-  localStorage.setItem('digimon', JSON.stringify(data));
 
   let arrayDigimon = JSON.parse(localStorage.getItem('digimon'));
 
