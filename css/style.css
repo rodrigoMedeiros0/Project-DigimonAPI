@@ -28,6 +28,10 @@
   margin: 10rem auto 2.5rem 0;
 }
 
+.active {
+  border-bottom: 0.2rem solid var(--orange);
+}
+
 nav {
   background: var(--light-purple);
   display: flex;
@@ -63,9 +67,11 @@ nav .nav-items li a {
   font-weight: 500;
   text-decoration: none;
 }
-nav .nav-items li a:hover {
+
+ nav .nav-items li a:hover {
   color: #f18805;
-}
+ }
+
 nav form {
   display: flex;
   height: 2.5rem;
