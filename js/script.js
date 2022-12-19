@@ -37,7 +37,7 @@ searchBtn.onclick = () => {
 
 async function getAllDigimons() {
   displayNoneDigimon();
-  navBarAnchors.forEach( element => element.classList.remove('active'));  
+  navBarAnchors.forEach((element) => element.classList.remove('active'));
 
   document.getElementById('getAllDigimon').classList.remove('hide');
 
@@ -50,7 +50,6 @@ async function getAllDigimons() {
   localStorage.setItem('digimon', JSON.stringify(data));
 
   data.map((digimon) => {
-
     //card element
     let divCard = document.createElement('div');
     divCard.className = 'container';
@@ -82,17 +81,18 @@ async function getAllDigimons() {
   });
 }
 
-const navBarAnchors = document.querySelectorAll('.nav-items a') 
+const navBarAnchors = document.querySelectorAll('.nav-items a');
 
 let fetchLevelDigimon = async (level, id) => {
   closeMenu();
+  document.getElementById('searchInput').innerText = '';
   let url = `https://digimon-api.vercel.app/api/digimon/level/${level}`;
-  navBarAnchors.forEach( element => {
+  navBarAnchors.forEach((element) => {
     if (element.innerHTML === level) {
-      navBarAnchors.forEach( element => element.classList.remove('active'));
-      element.classList.add('active')
+      navBarAnchors.forEach((element) => element.classList.remove('active'));
+      element.classList.add('active');
     }
-  })
+  });
   displayNoneDigimon();
   id.classList.remove('hide');
 
@@ -179,7 +179,7 @@ async function searchDigimon() {
   let arrayDigimon = JSON.parse(localStorage.getItem('digimon'));
 
   let searchInput = document.getElementById('searchInput').value;
-  clearSearchContainer()
+  clearSearchContainer();
 
   let filterResult = arrayDigimon.filter(
     (digimon) =>
@@ -187,21 +187,39 @@ async function searchDigimon() {
       digimon.name.match(searchInput),
   );
   let nameFilter = '';
-  navBarAnchors.forEach( element => {
-    if (element.className == 'active'){
+  navBarAnchors.forEach((element) => {
+    if (element.className == 'active') {
       nameFilter = element.innerHTML;
     }
   });
 
-   if (searchInput.length > 0) {
-     filterResult.forEach((digimon) => {
-        let name= digimon.name;
-        let level= digimon.level;
-        let img = digimon.img;
-        if (nameFilter == level || nameFilter == '') {
-          createContainerSearch(search,img,name,level)
-        }
-     });
+  if (searchInput.length > 0) {
+    filterResult.forEach((digimon) => {
+      let name = digimon.name;
+      let level = digimon.level;
+      let img = digimon.img;
+      if (nameFilter == level || nameFilter == '') {
+        createContainerSearch(search, img, name, level);
+      }
+    });
+  } else {
+    switch (nameFilter) {
+      case 'In Training':
+        fetchLevelDigimon('In Training', training);
+        break;
+      case 'Rookie':
+        fetchLevelDigimon('Rookie', rookie);
+        break;
+      case 'Champion':
+        fetchLevelDigimon('Champion', champion);
+        break;
+      case 'Ultimate':
+        fetchLevelDigimon('Ultimate', ultimate);
+        break;
+      case 'Mega':
+        fetchLevelDigimon('Mega', mega);
+        break;
+    }
   }
 }
 
@@ -219,7 +237,7 @@ function clearSearchContainer() {
   }
 }
 
-function createContainerSearch(container,digimonImage,digimon, level) {
+function createContainerSearch(container, digimonImage, digimon, level) {
   container.classList.remove('hide');
   let divCard = document.createElement('div');
   divCard.className = 'container';
