@@ -48,7 +48,7 @@ async function getAllDigimons() {
 
 getAllDigimons();
 
-function showAllDigimon() {
+async function showAllDigimon() {
   titleMain.innerText = 'Lista com todos os Digimons';
 
   let arrayDigimon = JSON.parse(localStorage.getItem('digimon'));
@@ -68,7 +68,7 @@ function showAllDigimon() {
   });
 }
 
-showAllDigimon();
+await showAllDigimon();
 
 function clickShowAll() {
   displayNoneDigimon();
